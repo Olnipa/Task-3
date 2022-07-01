@@ -19,18 +19,18 @@ namespace Arrays
                 for(int column = 0; array2D.GetLength(1) > column; column++)
                 {
                     Console.Write(array2D[line, column] + " ");
-
-                    if (line == lineForSum - 1)
-                    {
-                        sum += array2D[line, column];
-                    }
-
-                    if(column == columnForMultiplication - 1)
-                    {
-                        multiplication *= array2D[line, column];
-                    }
                 }
                 Console.WriteLine();
+            }
+
+            for (int column = 0; column <= array2D.GetLength(1) - 1; column++)
+            {
+                sum += array2D[lineForSum - 1, column];
+            }
+
+            for (int line = 0; line <= array2D.GetLength(0) - 1; line++)
+            {
+                multiplication *= array2D[line, columnForMultiplication - 1];
             }
 
             if (array2D.GetLength(0) < lineForSum)
