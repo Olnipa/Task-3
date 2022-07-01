@@ -1,0 +1,55 @@
+using System;
+
+namespace Arrays
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int strokeQuantity = 10;
+            int columnQuantity = 10;
+            int[,] array = new int[strokeQuantity, columnQuantity];
+            int maxNumber = int.MinValue;
+            int changingNumber = 0;
+            int cursorPositionY = 2;
+            int cursorPositionX = columnQuantity * 3 + 2;
+            int minRandomNumber = 10;
+            int maxRandomNumber = 100;
+
+            Console.WriteLine("Исходная матрица:\n");
+
+            for (int line = 0; array.GetLength(0) > line; line++)
+            {
+                for(int column = 0; array.GetLength(1) > column; column++)
+                {
+                    array[line, column] = random.Next(minRandomNumber, maxRandomNumber);
+
+                    if (array[line, column] > maxNumber)
+                    {
+                        maxNumber = array[line, column];
+                    }
+                    Console.Write(array[line, column] + " ");
+                }
+                Console.WriteLine();
+            }
+            Console.SetCursorPosition(cursorPositionX, 0);
+            Console.WriteLine("Измененная матрица:\n");
+            Console.SetCursorPosition(cursorPositionX, cursorPositionY++);
+
+            for (int line = 0; array.GetLength(0) > line; line++)
+            {
+                for (int column = 0; array.GetLength(1) > column; column++)
+                {
+                    if (array[line, column] == maxNumber)
+                    {
+                        array[line, column] = changingNumber;
+                    }
+                    Console.Write(array[line, column] + " ");
+                }
+                Console.SetCursorPosition(cursorPositionX, cursorPositionY++);
+            }
+            Console.WriteLine("\nМаксимальное число: " + maxNumber);
+        }
+    }
+}
