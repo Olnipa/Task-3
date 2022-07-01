@@ -1,0 +1,55 @@
+using System;
+
+namespace Arrays
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[,] array2D = { { -1, 3, 5 }, { -4, 7, 7 }, { 12, 4, 8 } };
+            int lineForSum = 2;
+            int columnForMultiplication = 1;
+            int sum = 0;
+            int multiplication = 1;
+
+            Console.WriteLine("Исходная матрица:\n");
+
+            for (int line = 0; array2D.GetLength(0) > line; line++)
+            {
+                for(int column = 0; array2D.GetLength(1) > column; column++)
+                {
+                    Console.Write(array2D[line, column] + " ");
+
+                    if (line == lineForSum - 1)
+                    {
+                        sum += array2D[line, column];
+                    }
+
+                    if(column == columnForMultiplication - 1)
+                    {
+                        multiplication *= array2D[line, column];
+                    }
+                }
+                Console.WriteLine();
+            }
+
+            if (array2D.GetLength(0) < lineForSum)
+            {
+                Console.WriteLine("\nCтроки " + lineForSum + " в указанном выше массиве нет.");
+            }
+            else
+            {
+                Console.WriteLine("\nСумма чисел строки " + lineForSum + " равна " + sum);
+            }
+
+            if (array2D.GetLength(1) < columnForMultiplication)
+            {
+                Console.WriteLine("Столбца " + columnForMultiplication + " в указанном выше массиве нет.");
+            }
+            else
+            {
+                Console.WriteLine("Произведение чисел столбца " + columnForMultiplication + " равно " + multiplication);
+            }
+        }
+    }
+}
