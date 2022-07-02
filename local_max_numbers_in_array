@@ -1,0 +1,44 @@
+using System;
+
+namespace Arrays
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int minNumberForArray = 0;
+            int maxNumberForArray = 6;
+            int numbersQuantity = 30;
+            int[] array = new int[numbersQuantity];
+            int lastPositionNumberOfArray = array.Length - 1;
+
+            Console.Write("Дан массив чисел: ");
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = random.Next(minNumberForArray, maxNumberForArray);
+                Console.Write(array[i] + " ");
+            }
+            Console.Write("\n\nЛокальные максимумы данного массива: ");
+
+            if (array[0] >= array[1])
+            {
+                Console.Write(array[0] + " ");
+            }
+
+            for (int i = 1; i < array.Length - 1; i++)
+            {
+                if (array[i] >= array[i + 1] && array[i] >= array[i - 1])
+                {
+                    Console.Write(array[i] + " ");
+                }
+            }
+
+            if (array[lastPositionNumberOfArray] >= array[lastPositionNumberOfArray - 1])
+            {
+                Console.Write(array[lastPositionNumberOfArray]);
+            }
+        }
+    }
+}
