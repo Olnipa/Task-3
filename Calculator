@@ -7,11 +7,7 @@ namespace Arrays
         static void Main(string[] args)
         {
             bool isWorking = true;
-            string enteredValue;
-            int enteredNumber;
             int[] arrayOfNumbers = new int[0];
-            int[] temporaryArray;
-            int sumOfNumbers = 0;
 
             Console.WriteLine("Привет! Я - калькулятор однофункциональный с функцией запоминания. Вы вводите числа, а я их суммирую, если вы попросите.\n" +
                 "\nЕсли Вы хоитет просуммировать введенные числа - введите \"Sum\".\nЕсли вы хотите закончить работу в однофункциональном " +
@@ -19,21 +15,21 @@ namespace Arrays
 
             while (isWorking)
             {
+                string enteredValue;
+
                 Console.Write("Введите число, \"Sum\" или \"Exit\": ");
-                enteredValue = Console.ReadLine();
+                enteredValue = Console.ReadLine().ToLower();
 
                 switch (enteredValue)
                 {
-                    case "Exit":
                     case "exit":
                         isWorking = false;
                         break;
-                    case "Sum":
                     case "sum":
 
                         if (arrayOfNumbers.Length > 0)
                         {
-                            sumOfNumbers = 0;
+                            int sumOfNumbers = 0;
 
                             for (int j = 0; j < arrayOfNumbers.Length; j++)
                             {
@@ -42,9 +38,13 @@ namespace Arrays
                             Console.WriteLine("Сумма введенных чисел: " + sumOfNumbers);
                         }
                         else
+                        {
                             Console.WriteLine("Вы еще не ввели никаких чисел. В начале введите числа, и после этого я смогу их просуммировать.");
+                        }
                         break;
                     default:
+                        int enteredNumber;
+                        int[] temporaryArray;
                         enteredNumber = Convert.ToInt32(enteredValue);
                         temporaryArray = new int[arrayOfNumbers.Length + 1];
 
