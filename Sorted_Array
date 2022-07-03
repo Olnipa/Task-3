@@ -14,6 +14,9 @@ namespace sorting
             int[] temporaryArray;
             int[] sortedArray = new int[arrayOfNumbers.Length];
 
+            Console.Write("Исходный массив:");
+            Console.SetCursorPosition(24,0);
+
             for (int i = 0; i < arrayOfNumbers.Length; i++)
             {
                 arrayOfNumbers[i] = random.Next(minArrayNumber, maxArrayNumber);
@@ -37,7 +40,8 @@ namespace sorting
                 temporaryArray[minNumberIndex] = int.MaxValue;
                 sortedArray[j] = minNumber;
             }
-            Console.WriteLine();
+            Console.Write("\nОтсортированный массив: ");
+            Console.SetCursorPosition(24, 1);
 
             foreach (int number in sortedArray)
             {
