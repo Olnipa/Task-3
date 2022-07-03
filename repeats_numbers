@@ -1,0 +1,56 @@
+using System;
+
+namespace Arrays
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int arraySize = 30;
+            int[] arrayOfNumbers = new int[arraySize];
+            Random random = new Random();
+            int minValueRange = 0;
+            int maxValueRange = 21;
+            int maxRepeats = 0;
+            int maxRepeatsNumber = arrayOfNumbers[0];
+
+            for (int i = 0; i < arrayOfNumbers.Length; i++)
+            {
+                arrayOfNumbers[i] = random.Next(minValueRange, maxValueRange);
+            }
+
+            foreach (int number in arrayOfNumbers)
+            {
+                Console.Write(number + " ");
+            }
+
+            for (int i = 0; i < arrayOfNumbers.Length - 1; i++)
+            {
+                int j = 1;
+                int repeats = 0;
+
+                while (i + j < arrayOfNumbers.Length && arrayOfNumbers[i] == arrayOfNumbers[i + j])
+                {
+                    j++;
+                    repeats++;
+
+                    if (maxRepeats < repeats)
+                    {
+                        maxRepeats = repeats;
+                        maxRepeatsNumber = arrayOfNumbers[i];
+                    }
+                }
+            }
+
+            if (maxRepeats > 0)
+            {
+                maxRepeats++;
+                Console.WriteLine($"\nПервое встреченное число с максимальным количеством повторений подряд: {maxRepeatsNumber}. Оно повторялось подряд {maxRepeats} раз.");
+            }
+            else
+            {
+                Console.WriteLine($"\nНи одно число не повторялось подряд даже дважды.");
+            }
+        }
+    }
+}
