@@ -1,0 +1,19 @@
+using System;
+
+namespace strinSplit
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string text = "Дана строка с текстом. Используя метод строки String.Split() получить массив слов, " +
+                "которые разделены пробелом в тексте и вывести массив, каждое слово с новой строки.";
+            string[] separateWords = text.Split(' ');
+
+            for (int i = 0; i < separateWords.Length; i++)
+            {
+                Console.WriteLine(separateWords[i]);
+            }
+        }
+    }
+}
