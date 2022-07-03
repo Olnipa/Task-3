@@ -1,0 +1,48 @@
+using System;
+
+namespace sorting
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int minArrayNumber = 0;
+            int maxArrayNumber = 10;
+            int arraySize = 10;
+            int[] arrayOfNumbers = new int[arraySize];
+            int[] temporaryArray;
+            int[] sortedArray = new int[arrayOfNumbers.Length];
+
+            for (int i = 0; i < arrayOfNumbers.Length; i++)
+            {
+                arrayOfNumbers[i] = random.Next(minArrayNumber, maxArrayNumber);
+                Console.Write(arrayOfNumbers[i] + " ");
+            }
+            temporaryArray = arrayOfNumbers;
+
+            for (int j = 0; j < sortedArray.Length; j++)
+            {
+                int minNumber = int.MaxValue;
+                int minNumberIndex = 0;
+
+                for (int i = 0; i < temporaryArray.Length; i++)
+                {
+                    if (temporaryArray[i] < minNumber)
+                    {
+                        minNumber = temporaryArray[i];
+                        minNumberIndex = i;
+                    }
+                }
+                temporaryArray[minNumberIndex] = int.MaxValue;
+                sortedArray[j] = minNumber;
+            }
+            Console.WriteLine();
+
+            foreach (int number in sortedArray)
+            {
+                Console.Write(number + " ");
+            }
+        }
+    }
+}
