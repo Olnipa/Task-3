@@ -1,0 +1,59 @@
+using System;
+
+namespace sorting
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int minArrayNumber = 0;
+            int maxArrayNumber = 10;
+            int arraySize = 5;
+            int[] arrayOfNumbers = new int[arraySize];
+            bool isWorking = true;
+
+            Console.WriteLine("Исходный массив: ");
+
+            for (int i = 0; i < arrayOfNumbers.Length; i++)
+            {
+                arrayOfNumbers[i] = random.Next(minArrayNumber, maxArrayNumber);
+                Console.Write(arrayOfNumbers[i] + " ");
+            }
+
+            while (isWorking == true)
+            {
+                Console.Write("\n\nУкажите, на какое количество значений вы хотите сдвинуть массив влево, либо введите Exit для выхода: ");
+                string enteredValue = Console.ReadLine().ToLower();
+
+                switch (enteredValue)
+                {
+                    case "exit":
+                        isWorking = false;
+                        break;
+                    default:
+                        for (int j = 0; j < Convert.ToInt32(enteredValue); j++)
+                        {
+                            int temporaryMemoryNumber1 = arrayOfNumbers[0];
+                            int temporaryMemoryNumber2;
+
+                            for (int i = arrayOfNumbers.Length - 1; i >= 0; i--)
+                            {
+                                temporaryMemoryNumber2 = arrayOfNumbers[i];
+                                arrayOfNumbers[i] = temporaryMemoryNumber1;
+                                temporaryMemoryNumber1 = temporaryMemoryNumber2;
+                            }
+                        }
+
+                        Console.WriteLine("\nПолучившийся смещенный  массив: ");
+
+                        for (int i = 0; i < arrayOfNumbers.Length; i++)
+                        {
+                            Console.Write(arrayOfNumbers[i] + " ");
+                        };
+                        break;
+                }
+            }
+        }
+    }
+}
